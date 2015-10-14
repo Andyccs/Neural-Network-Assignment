@@ -12,25 +12,6 @@ train_set_mean = process_setting.xmean;
 train_set_std = process_setting.xstd;
 train_set_class = T_train;
 
-% Split to train_set and validation_set
-% To avoid unfortunate split, we get the first 460 and last 460 from the original train set
-% as validation set. Note that the class of first 460 is all -1 and the class of last 460
-% is all 1. 
-temp_train_set_first_460 = train_set(:, 1:460);
-temp_train_set_last_460 = train_set(:, size(train_set, 2) - 459:size(train_set, 2));
-validation_set = [temp_train_set_first_460, temp_train_set_last_460];
-
-temp_train_set_class_first_460 = train_set_class(:, 1:460);
-temp_train_set_class_last_460 = ...
-    train_set_class(:, size(train_set_class, 2) - 459:size(train_set_class, 2));
-validation_set_class = [temp_train_set_class_first_460, temp_train_set_class_last_460];
-
-validation_data.P = validation_set;
-validation_data.T = validation_set_class;
-
-train_set = train_set(:, 461:size(train_set, 2) - 460);
-train_set_class = train_set_class(:, 461:size(train_set_class, 2) - 460);
-
 % transform test set by normalization to:
 % 1. mean of training set
 % 2. std of training set
@@ -121,16 +102,16 @@ initial_layer_delay_condition = []; % Don't care
     train_set_class, ...
     initial_input_delay_condition, ...
     initial_layer_delay_condition, ...
-    validation_data);
+    test_data);
 
 %% Validation and Calculation
 
 % fields = 1
 % number_of_validation_set = 920
-[fields, number_of_validation_set] = size(validation_set_class);
+[fields, number_of_test_set] = size(test_set_class);
 
 % test_set => model => results
-simulation_results = sim(net, validation_set);
+simulation_results = sim(net, test_set);
 
 % Since we are using bipolar sigmoidal function for output layer neuron,
 % we transform the simulation results using a hard limiter.
@@ -142,38 +123,6 @@ neuralnetscore = sign(simulation_results);
 % Training error rate
 % TODO: check this equation
 missclassification_rate = ...
-    sum(0.5 * abs(validation_set_class - neuralnetscore)) / number_of_validation_set;
-
-fprintf('Misclassfication rate: %f', missclassification_rate);
-pause
-%% Retrain the model using both test_set and validation_set
-test_set = [test_set, validation_set];
-test_set_class = [test_set_class, validation_set_class];
-
-minmax_train_set = minmax(train_set);
-
-net = newff(minmax_train_set, ...
-    n_layers_number_of_neurons, ... 
-    n_layers_transfer_functions, ...
-    back_propagation_training_function, ...
-    back_propagation_weight_learning_function, ...
-    performance_function); 
-
-[net, training_record] = train(net, ...
-    train_set, ...
-    train_set_class, ...
-    initial_input_delay_condition, ...
-    initial_layer_delay_condition, ...
-    test_data);
-
-%% Calculate test error rate
-[fields, number_of_test_set] = size(test_set_class);
-
-simulation_results = sim(net, test_set);
-neuralnetscore = sign(simulation_results);
-
-test_error_rate = ...
     sum(0.5 * abs(test_set_class - neuralnetscore)) / number_of_test_set;
 
-fprintf('Test error rate: %f', missclassification_rate)
-
+fprintf('Misclassfication rate: %f', missclassification_rate);
