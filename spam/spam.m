@@ -1,49 +1,36 @@
-clear; clc; close all;
-rng('default');
+function err = spam(...
+    train_set,...
+    train_set_class,...
+    validation_set,...
+    validation_set_class,...
+    n_layers_number_of_neurons,...
+    n_layers_transfer_functions,...
+    learning_rate,...
+    iterations)
 
-%% load the spam data
-load('spam_data.mat');
+rng('default');
 
 %% Preprocessing
 
 % preprocess training set by normalization to 0 mean and 1 std
-[train_set, process_setting] = mapstd(P_train);
+[train_set, process_setting] = mapstd(train_set);
 train_set_mean = process_setting.xmean;
 train_set_std = process_setting.xstd;
-train_set_class = T_train;
 
-% transform test set by normalization to:
+% transform validation set by normalization to:
 % 1. mean of training set
 % 2. std of training set
-test_set = trastd(P_test, train_set_mean, train_set_std);
-test_set_class = T_test;
+validation_set = trastd(validation_set, train_set_mean, train_set_std);
 
-% test_data is a struct to hold test_set and test_set_class
-test_data.P = test_set;
-test_data.T = test_set_class;
+% validation_data is a struct to hold validation_set and validation_set_class
+validation_data.P = validation_set;
+validation_data.T = validation_set_class;
 
 % training set variables: train_set, train_set_class
-% testing set variables: test_set, test_set_class, test_data
 % validation set variables: validation_set, validation_set_class, validation_data
-
-% uncomment this line if you want to visualize all 57 x 57 attributes
-% plotData(test_set, test_set_class);
 
 %% Setting up variables for feed forward networks
 minmax_train_set = minmax(train_set);
-
-number_of_hidden_neuron = 10;   % Experiment variable 2
-n_layers_number_of_neurons = ... % Experiment variable 3
-    [number_of_hidden_neuron, 10, 1];
-
-% transfer function: activation functions for neurons
-% tansig: bipolar sigmoidal function, with a=1 and b=2
-% logsig: unipolar sigmoidal function
-% purelin: linear function
-hidden_layer_transfer_function = 'tansig';
-output_layer_transfer_function = 'tansig';
-n_layers_transfer_functions = ... % Experiment variable 3
-    {hidden_layer_transfer_function, 'tansig', output_layer_transfer_function};
 
 % TODO: what is this
 % traingdx(default): gradient descent with momentum and adaptive learning
@@ -73,10 +60,10 @@ net = newff(minmax_train_set, ...
 %% setting up training parameters
 
 % lr: learning rate
-net.trainParam.lr = 0.1;       % Experiment variable 1
+net.trainParam.lr = learning_rate;       % Experiment variable 1
 
 % epochs: maximum number of training iterations before training is stopped
-net.trainParam.epochs = 1000;  % Experiment variable 4
+net.trainParam.epochs = iterations;  % Experiment variable 4
 
 % goal: performance goal
 net.trainParam.goal = 0;
@@ -102,16 +89,16 @@ initial_layer_delay_condition = []; % Don't care
     train_set_class, ...
     initial_input_delay_condition, ...
     initial_layer_delay_condition, ...
-    test_data);
+    validation_data);
 
 %% Validation and Calculation
 
 % fields = 1
 % number_of_validation_set = 920
-[fields, number_of_test_set] = size(test_set_class);
+[~, number_of_validation_set] = size(validation_set_class);
 
-% test_set => model => results
-simulation_results = sim(net, test_set);
+% validation_set => model => results
+simulation_results = sim(net, validation_set);
 
 % Since we are using bipolar sigmoidal function for output layer neuron,
 % we transform the simulation results using a hard limiter.
@@ -123,6 +110,8 @@ neuralnetscore = sign(simulation_results);
 % Training error rate
 % TODO: check this equation
 missclassification_rate = ...
-    sum(0.5 * abs(test_set_class - neuralnetscore)) / number_of_test_set;
+    sum(0.5 * abs(validation_set_class - neuralnetscore)) / number_of_validation_set;
 
-fprintf('Misclassfication rate: %f', missclassification_rate);
+err = missclassification_rate;
+
+end
