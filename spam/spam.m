@@ -60,7 +60,7 @@ net = newff(minmax_train_set, ...
 %% setting up training parameters
 
 % lr: learning rate
-net.trainParam.lr = learning_rate;       % Experiment variable 1
+net.trainParam.lr = learning_rate;   % Experiment variable 1
 
 % epochs: maximum number of training iterations before training is stopped
 net.trainParam.epochs = iterations;  % Experiment variable 4

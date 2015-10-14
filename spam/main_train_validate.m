@@ -1,4 +1,8 @@
-clear; clc; close all;
+function main_train_validate(...
+  n_layers_number_of_neurons,...
+  n_layers_transfer_functions,...
+  learning_rate,...
+  iterations)
 
 %% load the spam data
 load('spam_data.mat');
@@ -23,11 +27,7 @@ validation_set_class = [temp_train_set_class_first_460, temp_train_set_class_las
 train_set = train_set(:, 461:size(train_set, 2) - 460);
 train_set_class = train_set_class(:, 461:size(train_set_class, 2) - 460);
 
-n_layers_number_of_neurons = [10, 10, 1];
-n_layers_transfer_functions = {'tansig', 'tansig', 'tansig'};
-learning_rate = 0.2;
-iterations = 1000;
-
+%% Get misclassification error
 err = spam(...
     train_set,...
     train_set_class,...
@@ -39,3 +39,5 @@ err = spam(...
     iterations);
 
 fprintf('misclassification error: %f', err);
+
+end
