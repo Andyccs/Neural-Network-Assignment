@@ -4,7 +4,7 @@ Experiment 1:
 - Iterations = 1000
 - Number of hidden layer = 1
 
-Neuron = 1, MError =, Error = 0.070652
+Neuron = 1, MError = 0.119565, Error = 0.070652
 Neuron = 2, MError = 0.120652, Error = 0.071739
 Neuron = 3, MError = 0.115217, Error = 0.081522
 Neuron = 4, MError = 0.110870, Error = 0.084783
