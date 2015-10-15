@@ -1,0 +1,56 @@
+Experiment 1:
+ 
+- Learning rate = 0.1
+- Iterations = 1000
+- Number of hidden layer = 1
+
+Neuron = 1, MError =, Error = 0.070652
+Neuron = 2, MError = 0.120652, Error = 0.071739
+Neuron = 3, MError = 0.115217, Error = 0.081522
+Neuron = 4, MError = 0.110870, Error = 0.084783
+Neuron = 5, MError = 0.108696, Error = 0.064130
+Neuron = 6, MError = 0.119565, Error = 0.067391
+Neuron = 7, MError = 0.121739, Error = 0.081522
+Neuron = 8, MError = 0.111957, Error = 0.065217
+Neuron = 9, MError = 0.119565, Error = 0.070652
+Neuron = 10, MError = 0.118478, Error = 0.68478
+
+
+Experiment 2:
+ 
+- Learning rate = 0.1
+- Iterations = 1000
+- Number of hidden layer = 2
+
+Neuron = 1 ,1, MError = 0.109783, Error = 0.069565
+Neuron = 2 ,1, MError = 0.118478, Error = 0.069565
+Neuron = 3 ,1, MError = 0.121739, Error = 0.075000
+Neuron = 4 ,1, MError = 0.108696, Error = 0.072826
+Neuron = 5 ,1, MError = 0.118478, Error = 0.068478
+Neuron = 6 ,1, MError = 0.116304, Error = 0.066304
+Neuron = 7 ,1, MError = 0.120652, Error = 0.067391
+Neuron = 8 ,1, MError = 0.114130, Error = 0.069565
+Neuron = 9 ,1, MError = 0.113043, Error = 0.068478
+Neuron = 10,1, MError = 0.117391, Error = 0.072826
+
+Neuron = 1 ,2, MError = 0.121739, Error = 0.079348
+Neuron = 2 ,2, MError = 0.506522, Error = 0.067391
+Neuron = 3 ,2, MError = 0.127174, Error = 0.071739
+Neuron = 4 ,2, MError = 0.116304, Error = 0.080435
+Neuron = 5 ,2, MError = 0.107609, Error = 0.059783
+Neuron = 6 ,2, MError = 0.121739, Error = 0.064130
+Neuron = 7 ,2, MError = 0.114130, Error = 0.068478
+Neuron = 8 ,2, MError = 0.114130, Error = 0.070652
+Neuron = 9 ,2, MError = 0.123913, Error = 0.068478
+Neuron = 10,2, MError = 0.117391, Error = 0.068478
+
+Neuron = 1 ,3, MError = 0.104348, Error = 0.069565
+Neuron = 2 ,3, MError = 0.118478, Error = 0.068478
+Neuron = 3 ,3, MError = 0.110870, Error = 0.073913
+Neuron = 4 ,3, MError = 0.118478, Error = 0.067391
+Neuron = 5 ,3, MError = 0.108696, Error = 0.069565
+Neuron = 6 ,3, MError = 0.107609, Error = 0.066304
+Neuron = 7 ,3, MError = 0.115217, Error = 0.063043
+Neuron = 8 ,3, MError = 0.111957, Error = 0.072826
+Neuron = 9 ,3, MError = 0.115217, Error = 0.064130
+Neuron = 10,3, MError = 0.111957, Error = 0.065217
