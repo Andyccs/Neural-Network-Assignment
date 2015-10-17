@@ -1,0 +1,50 @@
+Experiment 1
+============
+
+Get the last 4128 instances from the original training set to form our validation set
+
+Number of hidden layer = 1
+
+misclassification error: 82498.604891 i = 1
+misclassification error: 82471.841685 i = 2
+misclassification error: 82551.464664 i = 3
+misclassification error: 82402.498928 i = 4
+misclassification error: 84130.994040 i = 5
+misclassification error: 81687.342675 i = 6
+misclassification error: 84502.870313 i = 7
+misclassification error: 83061.036048 i = 8
+misclassification error: 83896.453422 i = 9
+misclassification error: 83575.818121 i = 10
+
+Number of hidden layer = 2
+
+misclassification error: 82121.416401 j = 1 , i = 1
+misclassification error: 82561.611068 j = 2 , i = 1
+misclassification error: 83236.912413 j = 3 , i = 1
+misclassification error: 82881.600885 j = 4 , i = 1
+misclassification error: 83126.385214 j = 5 , i = 1
+misclassification error: 82987.296217 j = 6 , i = 1
+misclassification error: 86051.992795 j = 7 , i = 1
+misclassification error: 84158.324528 j = 8 , i = 1
+misclassification error: 85323.538159 j = 9 , i = 1
+misclassification error: 81637.845220 j = 10 , i = 1
+misclassification error: 123779.879239 j = 1 , i = 2
+misclassification error: 82869.003744 j = 2 , i = 2
+misclassification error: 84811.853803 j = 3 , i = 2
+misclassification error: 82526.668946 j = 4 , i = 2
+misclassification error: 82136.345957 j = 5 , i = 2
+misclassification error: 83077.668129 j = 6 , i = 2
+misclassification error: 84977.004740 j = 7 , i = 2
+misclassification error: 81516.721529 j = 8 , i = 2
+misclassification error: 80965.996244 j = 9 , i = 2
+misclassification error: 83499.374742 j = 10 , i = 2
+misclassification error: 81743.086190 j = 1 , i = 3
+misclassification error: 81962.394204 j = 2 , i = 3
+misclassification error: 83365.800754 j = 3 , i = 3
+misclassification error: 84097.180471 j = 4 , i = 3
+misclassification error: 83853.165867 j = 5 , i = 3
+misclassification error: 125005.245215 j = 6 , i = 3
+misclassification error: 80400.347100 j = 7 , i = 3
+misclassification error: 81392.849611 j = 8 , i = 3
+misclassification error: 82599.684897 j = 9 , i = 3
+misclassification error: 81643.091947 j = 10 , i = 3

@@ -83,7 +83,7 @@ net.trainParam.time = inf;
 initial_input_delay_condition = []; % Don't care
 initial_layer_delay_condition = []; % Don't care
 
-[net, ~] = train(net, ...
+net = train(net, ...
     train_set, ...
     train_set_class, ...
     initial_input_delay_condition, ...
@@ -92,9 +92,7 @@ initial_layer_delay_condition = []; % Don't care
 
 %% Validation and Calculation
 
-% fields = 1
-% number_of_validation_set = 4128
-[~, ~] = size(validation_set_class);
+validation_set_class_original = poststd(validation_set_class, train_set_class_mean, train_set_class_std);
 
 % validation_set => model => results
 simulation_results = sim(net, validation_set);
@@ -102,7 +100,7 @@ simulation_results = sim(net, validation_set);
 est = poststd(simulation_results, train_set_class_mean, train_set_class_std);
 
 % Training error rate
-missclassification_rate = sqrt(mean((validation_set_class - est).^2));
+missclassification_rate = sqrt(mean((validation_set_class_original - est).^2));
 err = missclassification_rate;
 
 end

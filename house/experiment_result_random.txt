@@ -1,0 +1,39 @@
+Experiment 2
+============
+
+Get 4128 instances randomly from the original training set to form our validation set
+
+Number of hidden layer = 1
+
+Number of hidden layer = 2
+
+misclassification error: 72497.633621 j = 1 , i = 1
+misclassification error: 72454.499993 j = 2 , i = 1
+misclassification error: 72299.846411 j = 3 , i = 1
+misclassification error: 71609.127358 j = 4 , i = 1
+misclassification error: 70294.213136 j = 5 , i = 1
+misclassification error: 71697.245269 j = 6 , i = 1
+misclassification error: 70440.770069 j = 7 , i = 1
+misclassification error: 72231.719110 j = 8 , i = 1
+misclassification error: 71177.533797 j = 9 , i = 1
+misclassification error: 70932.804131 j = 10 , i = 1
+misclassification error: 71955.691325 j = 1 , i = 2
+misclassification error: 72126.711591 j = 2 , i = 2
+misclassification error: 72383.400542 j = 3 , i = 2
+misclassification error: 72273.640925 j = 4 , i = 2
+misclassification error: 70219.939921 j = 5 , i = 2
+misclassification error: 69987.359122 j = 6 , i = 2
+misclassification error: 69321.311041 j = 7 , i = 2
+misclassification error: 71709.864966 j = 8 , i = 2
+misclassification error: 70502.249744 j = 9 , i = 2
+misclassification error: 71767.554418 j = 10 , i = 2
+misclassification error: 75406.476305 j = 1 , i = 3
+misclassification error: 71955.192047 j = 2 , i = 3
+misclassification error: 72114.385064 j = 3 , i = 3
+misclassification error: 70391.488007 j = 4 , i = 3
+misclassification error: 69830.280367 j = 5 , i = 3
+misclassification error: 71591.061209 j = 6 , i = 3
+misclassification error: 70291.302728 j = 7 , i = 3
+misclassification error: 71682.860186 j = 8 , i = 3
+misclassification error: 70510.212679 j = 9 , i = 3
+misclassification error: 71643.556513 j = 10 , i = 3

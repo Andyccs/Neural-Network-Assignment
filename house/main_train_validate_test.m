@@ -4,10 +4,9 @@ function main_train_validate_test(...
   learning_rate,...
   iterations)
 
-%% load the housing data
+%% Load the housing data
 load('california_data');
 
-%% Preprocessing
 train_set = P_train;
 train_set_class = T_train;
 
