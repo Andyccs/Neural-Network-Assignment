@@ -5,6 +5,17 @@ Get 4128 instances randomly from the original training set to form our validatio
 
 Number of hidden layer = 1
 
+misclassification error: 72358.876356 j = 1 
+misclassification error: 72322.333729 j = 2 
+misclassification error: 72308.758673 j = 3 
+misclassification error: 71599.155842 j = 4 
+misclassification error: 71325.833838 j = 5 
+misclassification error: 70324.284996 j = 6 
+misclassification error: 70313.798521 j = 7 
+misclassification error: 71314.785368 j = 8 
+misclassification error: 70641.143290 j = 9 
+misclassification error: 70257.642329 j = 10 
+
 Number of hidden layer = 2
 
 misclassification error: 72497.633621 j = 1 , i = 1
@@ -37,3 +48,4 @@ misclassification error: 70291.302728 j = 7 , i = 3
 misclassification error: 71682.860186 j = 8 , i = 3
 misclassification error: 70510.212679 j = 9 , i = 3
 misclassification error: 71643.556513 j = 10 , i = 3
+
