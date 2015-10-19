@@ -48,3 +48,53 @@ misclassification error: 80400.347100 j = 7 , i = 3
 misclassification error: 81392.849611 j = 8 , i = 3
 misclassification error: 82599.684897 j = 9 , i = 3
 misclassification error: 81643.091947 j = 10 , i = 3
+
+Experiment 1: purelin at output layer
+=====================================
+
+Number of hidden layer = 1
+
+misclassification error: 69906.152214 j = 1 , i = 0
+misclassification error: 69969.946755 j = 2 , i = 0
+misclassification error: 70182.114853 j = 3 , i = 0
+misclassification error: 69283.985553 j = 4 , i = 0
+misclassification error: 71543.790670 j = 5 , i = 0
+misclassification error: 67921.073886 j = 6 , i = 0
+misclassification error: 69135.389348 j = 7 , i = 0
+misclassification error: 69611.356118 j = 8 , i = 0
+misclassification error: 69541.227105 j = 9 , i = 0
+misclassification error: 69127.305631 j = 10 , i = 0
+
+Number of hidden layer = 2
+
+misclassification error: 70308.277571 j = 1 , i = 1
+misclassification error: 70393.573662 j = 2 , i = 1
+misclassification error: 124951.693120 j = 3 , i = 1
+misclassification error: 69674.316384 j = 4 , i = 1
+misclassification error: 128818.721828 j = 5 , i = 1
+misclassification error: 69055.113973 j = 6 , i = 1
+misclassification error: 74576.520467 j = 7 , i = 1
+misclassification error: 128717.875828 j = 8 , i = 1
+misclassification error: 73064.360502 j = 9 , i = 1
+misclassification error: 69717.398078 j = 10 , i = 1
+misclassification error: 71276.369422 j = 1 , i = 2
+misclassification error: 70248.197502 j = 2 , i = 2
+misclassification error: 73367.182453 j = 3 , i = 2
+misclassification error: 70268.949450 j = 4 , i = 2
+misclassification error: 68815.701537 j = 5 , i = 2
+misclassification error: 127647.332131 j = 6 , i = 2
+misclassification error: 69216.232246 j = 7 , i = 2
+misclassification error: 125052.754883 j = 8 , i = 2
+misclassification error: 67318.347666 j = 9 , i = 2
+misclassification error: 68815.335709 j = 10 , i = 2
+misclassification error: 73031.811595 j = 1 , i = 3
+misclassification error: 70596.775139 j = 2 , i = 3
+misclassification error: 71393.786681 j = 3 , i = 3
+misclassification error: 69116.026206 j = 4 , i = 3
+misclassification error: 65793.493663 j = 5 , i = 3
+misclassification error: 125364.626404 j = 6 , i = 3
+misclassification error: 67331.555740 j = 7 , i = 3
+misclassification error: 72785.788978 j = 8 , i = 3
+misclassification error: 68884.382015 j = 9 , i = 3
+misclassification error: 68982.303807 j = 10 , i = 3
+

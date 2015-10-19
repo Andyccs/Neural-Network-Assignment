@@ -103,4 +103,12 @@ est = poststd(simulation_results, train_set_class_mean, train_set_class_std);
 missclassification_rate = sqrt(mean((validation_set_class_original - est).^2));
 err = missclassification_rate;
 
+[validation_set_class_sorted, idx] = sort(validation_set_class_original, 2);
+y_sorted = est(:, idx);
+
+figure
+scatter(1:size(validation_set_class_sorted'), validation_set_class_sorted');
+hold on
+scatter(1:size(y_sorted'), y_sorted', '+');
+
 end

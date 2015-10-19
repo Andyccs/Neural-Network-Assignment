@@ -1,31 +1,9 @@
-rng('default');
-
-clear; clc; close all;
-%% Loading data
-load('california_data');
-
-%% Setting initial variables
-train_set = P_train';
-train_set_class = T_train';
-
-test_set = P_test';
-test_set_class = T_test';
-
-number_of_cluster = 15;
-
-%% Random split data
-indexes = randsample(1:length(train_set), 4128);
-validation_set = train_set(indexes, :);
-validation_set_class = train_set_class(indexes, :);
-
-temp_indexes = zeros(1, length(train_set));
-for i=1 : length(indexes)
-    temp_indexes(1, indexes(1, i)) = 1;
-end
-
-train_set_indexes = find(temp_indexes == 0);
-train_set = train_set(train_set_indexes, :);
-train_set_class = train_set_class(train_set_indexes, :);
+function house_rbf(...
+    train_set,...
+    train_set_class,...
+    validation_set,...
+    validation_set_class,...
+    number_of_cluster)
 
 % variable
 number_of_inputs = size(train_set, 1);
@@ -47,12 +25,8 @@ train_set_class_std = process_setting.xstd;
 validation_set = trastd(validation_set', train_set_mean, train_set_std)';
 validation_set_class = trastd(validation_set_class', train_set_class_mean, train_set_class_std)';
 
-% Normalize test set
-test_set = trastd(test_set', train_set_mean, train_set_std)';
-test_set_class = trastd(test_set_class', train_set_class_mean, train_set_class_std)';
-
 %% K mean clustering
-[results, centroids] = kmeans(train_set, number_of_cluster, 'MaxIter', 1000, 'Display', 'iter');
+[results, centroids] = kmeans(train_set, number_of_cluster, 'MaxIter', 1000);
 
 %% Calculate covariance
 correlation = cell(number_of_cluster, 1);
@@ -63,22 +37,28 @@ for i = 1 : number_of_cluster
 end
 
 %% Calculate Gram Matrix
-gram = zeros(number_of_inputs, number_of_cluster);
-
-for i = 1 : number_of_cluster
-    for j = 1 : number_of_inputs
-        distance = train_set(j,:) - centroids(i, :);
-        gram(j, i) = exp( -0.5 .* (distance * correlation{i} * distance') );
-    end
-end
+gram = calculate_gram(train_set, centroids, correlation);
 
 %% Calculate weight
 weight = inv(gram' * gram) * gram' * train_set_class;
 
-%% Calculate output
+%% Calculate Misclassification error using validation set
+gram = calculate_gram(validation_set, centroids, correlation);
 y = gram * weight;
 
-%% Calculate errors
-train_set_class_original = poststd(train_set_class, train_set_class_mean, train_set_class_std);
+%% Calculate misclassification errors
+validation_set_class_original = poststd(validation_set_class, train_set_class_mean, train_set_class_std);
 y_original = poststd(y, train_set_class_mean, train_set_class_std);
-sqrt(mean((train_set_class_original - y_original).^2))
+err = sqrt(mean((validation_set_class_original - y_original).^2));
+
+fprintf('Misclassfication error: %f', err);
+
+[validation_set_class_sorted, idx] = sort(validation_set_class_original, 1);
+y_sorted = y_original(idx, :);
+
+figure
+scatter(1:size(validation_set_class_sorted), validation_set_class_sorted);
+hold on
+scatter(1:size(y_sorted), y_sorted, '+');
+
+end

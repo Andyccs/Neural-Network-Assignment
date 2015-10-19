@@ -5,7 +5,7 @@ for i=1 : 3
 
 for j=1 : 10
 n_layers_number_of_neurons = [j, i, 1];
-n_layers_transfer_functions = {'tansig', 'tansig', 'tansig'};
+n_layers_transfer_functions = {'tansig', 'tansig', 'purelin'};
 learning_rate = 0.1;
 iterations = 1000;
 
