@@ -1,0 +1,10 @@
+n_layers_number_of_neurons = [5, 2, 1];
+n_layers_transfer_functions = {'tansig', 'tansig', 'tansig'};
+learning_rate = 0.1;
+iterations = 1000;
+
+Levenberg-Marquardt: 32, 0.064130
+BFGS Quasi_Newton: 48, 0.068478
+RProp: 55, 0.076087
+Gradient Descent with Momentum: 813, 0.061957
+Gradient Descent with Momentum and Adaptive Learning: 136, 0.068478
