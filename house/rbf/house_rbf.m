@@ -3,7 +3,8 @@ function house_rbf(...
     train_set_class,...
     validation_set,...
     validation_set_class,...
-    number_of_cluster)
+    spread,...
+    number_of_neurons)
 
 % variable
 number_of_inputs = size(train_set, 1);
@@ -25,26 +26,11 @@ train_set_class_std = process_setting.xstd;
 validation_set = trastd(validation_set', train_set_mean, train_set_std)';
 validation_set_class = trastd(validation_set_class', train_set_class_mean, train_set_class_std)';
 
-%% K mean clustering
-[results, centroids] = kmeans(train_set, number_of_cluster, 'MaxIter', 1000);
+%% RBF
+net = newrb(train_set(1:11500,:)', train_set_class(1:11500,:)', 0, spread, number_of_neurons, 1)';
 
-%% Calculate covariance
-correlation = cell(number_of_cluster, 1);
-
-for i = 1 : number_of_cluster
-    all_related_inputs = train_set(find(results == i), : );
-    correlation{i} = inv(cov(all_related_inputs));
-end
-
-%% Calculate Gram Matrix
-gram = calculate_gram(train_set, centroids, correlation);
-
-%% Calculate weight
-weight = inv(gram' * gram) * gram' * train_set_class;
-
-%% Calculate Misclassification error using validation set
-gram = calculate_gram(validation_set, centroids, correlation);
-y = gram * weight;
+y = sim(net, validation_set');
+y = y';
 
 %% Calculate misclassification errors
 validation_set_class_original = poststd(validation_set_class, train_set_class_mean, train_set_class_std);

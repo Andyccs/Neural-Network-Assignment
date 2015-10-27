@@ -1,4 +1,4 @@
-function main_train_validate(number_of_cluster)
+function main_train_validate(spread, number_of_neurons)
 
 rng('default');
 
@@ -24,6 +24,6 @@ train_set = train_set(train_set_indexes, :);
 train_set_class = train_set_class(train_set_indexes, :);
 
 %% Radial Basis Function
-house_rbf(train_set, train_set_class, validation_set, validation_set_class, number_of_cluster);
+house_rbf(train_set, train_set_class, validation_set, validation_set_class, spread, number_of_neurons);
 
 end

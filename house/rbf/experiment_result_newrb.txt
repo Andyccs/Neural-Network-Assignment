@@ -1,0 +1,20 @@
+Experiment 1
+============
+
+Max number of neurons = 10
+
+Misclassfication error: 85595.472489 Spread: 1
+Misclassfication error: 72555.543246 Spread: 2
+Misclassfication error: 67390.368937 Spread: 3
+Misclassfication error: 65211.390460 Spread: 4
+Misclassfication error: 64744.594026 Spread: 5
+Misclassfication error: 66579.316710 Spread: 6
+Misclassfication error: 64603.791070 Spread: 7
+Misclassfication error: 65703.737161 Spread: 8
+Misclassfication error: 66010.646168 Spread: 9
+Misclassfication error: 65238.455999 Spread: 10
+
+Experiment 2
+
+Max number of neurons = 500
+Misclassfication error: 65308.020817 Spread: 7

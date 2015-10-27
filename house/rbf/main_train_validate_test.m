@@ -1,4 +1,5 @@
-function main_train_validate_test(number_of_cluster)
+function main_train_validate_test(spread,...
+    number_of_neurons)
 
 rng('default');
 
@@ -13,6 +14,6 @@ test_set = P_test';
 test_set_class = T_test';
 
 %% Radial Basis Function
-house_rbf(train_set, train_set_class, test_set, test_set_class, number_of_cluster);
+house_rbf(train_set, train_set_class, test_set, test_set_class, spread, number_of_neurons);
 
 end
